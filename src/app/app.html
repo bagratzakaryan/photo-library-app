@@ -1,7 +1,24 @@
 <main class="main">
   <nav>
-    <a mat-raised-button color="primary" routerLink="/" routerLinkActive="active"> Photos </a>
-    <a mat-raised-button color="primary" routerLink="/favorites" routerLinkActive="active">
+    <a
+      #photos="routerLinkActive"
+      mat-raised-button
+      color="primary"
+      routerLink="/"
+      routerLinkActive
+      [routerLinkActiveOptions]="{ exact: true }"
+      [ngClass]="{ active: photos.isActive }"
+    >
+      Photos
+    </a>
+    <a
+      #favorites="routerLinkActive"
+      mat-raised-button
+      color="primary"
+      routerLink="/favorites"
+      routerLinkActive="active"
+      [ngClass]="{ active: favorites.isActive }"
+    >
       Favorites
     </a>
   </nav>

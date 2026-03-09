@@ -1,21 +1,7 @@
-@if (photos(); as photos) {
-  <div class="gallery-container">
-    @for (photo of photos; track photo.url) {
-      <div class="gallery-item">
-        <xm-item [photo]="photo" (click)="onNavigateToDetail(photo)"></xm-item>
+<xm-gallery [photos]="photos"></xm-gallery>
 
-        <button class="favorite-btn" mat-icon-button (click)="onAddFavorite(photo)">
-          <mat-icon [color]="'warn'">
-            {{ photo.favorite ? 'favorite' : 'favorite_border' }}
-          </mat-icon>
-        </button>
-      </div>
-    }
-  </div>
-
-  @if (loading) {
-    <figure class="loading">
-      <img src="loading.gif" height="130" alt="Loading ..." />
-    </figure>
-  }
+@if (loading) {
+  <figure class="loading">
+    <img src="loading.gif" height="130" alt="Loading ..." />
+  </figure>
 }

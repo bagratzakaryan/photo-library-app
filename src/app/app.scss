@@ -17,4 +17,8 @@ nav {
   justify-content: space-evenly;
   width: 100%;
   padding: 2rem;
+
+  .mat-mdc-raised-button.active {
+    background-color: var(--active-primary) !important; /* new active color */
+  }
 }

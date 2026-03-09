@@ -1,18 +1,18 @@
-import { Component, Signal, computed } from '@angular/core';
+import { Component, Input, Signal, computed } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { IPhoto } from '../core/photo';
-import { Item } from '../photos/item/item';
 import { PhotoService } from '../core/photo.service';
+import { Gallery } from '../core/gallery/gallery';
 
 @Component({
   selector: 'xm-favorites',
-  imports: [Item],
+  imports: [Gallery],
   templateUrl: './favorites.html',
   styleUrl: './favorites.scss',
 })
 export class Favorites {
-  photos!: Signal<IPhoto[]>;
+  @Input() photos!: Signal<IPhoto[]>;
 
   constructor(
     private readonly router: Router,

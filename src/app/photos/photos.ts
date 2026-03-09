@@ -1,15 +1,12 @@
 import { Component, Signal, HostListener, ChangeDetectorRef } from '@angular/core';
-import { Router } from '@angular/router';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 
 import { IPhoto } from '../core/photo';
-import { Item } from './item/item';
 import { PhotoService } from '../core/photo.service';
+import { Gallery } from '../core/gallery/gallery';
 
 @Component({
   selector: 'xm-photos',
-  imports: [MatButtonModule, MatIconModule, Item],
+  imports: [Gallery],
   templateUrl: './photos.html',
   styleUrl: './photos.scss',
 })
@@ -18,20 +15,10 @@ export class Photos {
   loading = false;
 
   constructor(
-    private readonly router: Router,
     private readonly photoService: PhotoService,
     private readonly cd: ChangeDetectorRef,
   ) {
     this.photos = this.photoService.photos;
-  }
-
-  onNavigateToDetail(photo: IPhoto): void {
-    this.photoService.setSelectedPhoto(photo);
-    this.router.navigateByUrl(`/photos/${photo.id}`);
-  }
-
-  onAddFavorite(photo: IPhoto): void {
-    this.photoService.updatePhoto({ ...photo, favorite: true });
   }
 
   @HostListener('window:scroll', [])

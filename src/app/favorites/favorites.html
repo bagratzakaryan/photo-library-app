@@ -1,13 +1,5 @@
-@if (photos(); as photos) {
-  <div class="gallery-container">
-    @for (photo of photos; track photo.url) {
-      <div class="gallery-item">
-        <xm-item [photo]="photo" (click)="onNavigateToDetail(photo)"></xm-item>
-      </div>
-    }
-  </div>
+<xm-gallery [photos]="photos" [isFavorite]="true"></xm-gallery>
 
-  @if (!photos.length) {
-    Favorites Not Found
-  }
+@if (!photos().length) {
+  Favorites Not Found
 }

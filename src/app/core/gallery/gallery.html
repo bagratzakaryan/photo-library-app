@@ -1,0 +1,15 @@
+<div class="gallery-container">
+  @for (photo of photos(); track photo.url) {
+    <div class="gallery-item">
+      <xm-item [photo]="photo" (click)="onNavigateToDetail(photo)"></xm-item>
+
+      @if (!isFavorite) {
+        <button class="favorite-btn" mat-icon-button (click)="onAddFavorite(photo)">
+          <mat-icon [color]="'warn'">
+            {{ photo.favorite ? 'favorite' : 'favorite_border' }}
+          </mat-icon>
+        </button>
+      }
+    </div>
+  }
+</div>
