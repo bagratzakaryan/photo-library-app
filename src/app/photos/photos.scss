@@ -1,0 +1,20 @@
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.gallery-item {
+  position: relative;
+  margin: 1em;
+
+  .favorite-btn {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+}
+
+.loading {
+  text-align: center;
+}

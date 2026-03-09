@@ -1,0 +1,9 @@
+@if (selectedPhoto(); as photo) {
+  <xm-item [photo]="photo"></xm-item>
+
+  @if (photo.favorite) {
+    <button mat-raised-button color="accent" (click)="onRemoveFavorite()">
+      Remove from Favorites
+    </button>
+  }
+}
