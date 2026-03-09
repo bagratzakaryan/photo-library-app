@@ -48,6 +48,10 @@ export class PhotoService {
       return favorites;
     }
 
+    // since the browser runs the image url which was given, finial url
+    // applied in browser when image loaded, that is why every time when
+    // you reload the browser it generates different images, and user see
+    // it different, but the applied urls of images in code the same every time
     const favoritesFromStorage = sessionStorage.getItem('favorites');
     if (favoritesFromStorage) {
       return signal(JSON.parse(favoritesFromStorage));
