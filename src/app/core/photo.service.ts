@@ -1,5 +1,4 @@
-// photo.service.ts
-import { Injectable, signal } from '@angular/core';
+import { Injectable, Signal, signal, computed } from '@angular/core';
 import { of, delay, tap, Observable } from 'rxjs';
 
 import { IPhoto } from './photo';
@@ -39,6 +38,22 @@ export class PhotoService {
   updateSelectedPhoto(photo: IPhoto): void {
     this.setSelectedPhoto(photo);
     this.updatePhoto(photo);
+  }
+
+  favoritePhotos(): Signal<IPhoto[]> {
+    const favorites = computed(() => this.photos().filter((photo: IPhoto) => photo.favorite));
+
+    if (favorites().length) {
+      sessionStorage.setItem('favorites', JSON.stringify(favorites()));
+      return favorites;
+    }
+
+    const favoritesFromStorage = sessionStorage.getItem('favorites');
+    if (favoritesFromStorage) {
+      return signal(JSON.parse(favoritesFromStorage));
+    }
+
+    return signal([]);
   }
 
   loadPhotos$(amount = 6): Observable<IPhoto[]> {

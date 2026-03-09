@@ -1,4 +1,4 @@
-import { Component, Input, Signal, computed } from '@angular/core';
+import { Component, Input, Signal } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { IPhoto } from '../core/photo';
@@ -18,9 +18,7 @@ export class Favorites {
     private readonly router: Router,
     private readonly photoService: PhotoService,
   ) {
-    this.photos = computed(() =>
-      this.photoService.photos().filter((photo: IPhoto) => photo.favorite),
-    );
+    this.photos = this.photoService.favoritePhotos();
   }
 
   onNavigateToDetail(photo: IPhoto): void {
